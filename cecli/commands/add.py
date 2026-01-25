@@ -207,6 +207,7 @@ class AddCommand(BaseCommand):
         """Get completion options for add command."""
         files = set(coder.get_all_relative_files())
         files = files - set(coder.get_inchat_relative_files())
+        files = [file for file in files if args.lower() in file.lower()]
         files = [quote_filename(fn) for fn in files]
         return files
 
